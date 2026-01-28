@@ -71,7 +71,7 @@ if prompt := st.chat_input("Ask a question"):
     system_message = {
         "role": "system",
         "content": (
-            "Give clear, concise, simple final answers only. "
+            "Give  answers with enthusiasm and explanation like you're their friend/mentor."
             "Do not show chain-of-thought, derivations, or internal reasoning. "
             "Avoid unnecessary formatting."
         )
@@ -79,8 +79,8 @@ if prompt := st.chat_input("Ask a question"):
 
     # Only last 3 messages
     recent_history = st.session_state.chat[-3:]
-    messages = [system_message] + recent_history
-
+    messages = [system_message] + st.session_state.chat
+    st.write(st.session_state.chat[-3:], st.session_state.chat,messages)
     # Assistant response
     with st.chat_message("assistant"):
         placeholder = st.empty()

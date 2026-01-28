@@ -15,9 +15,9 @@ st.title("AI")
 client = Groq(api_key=st.secrets["Groq"])
 
 MODELS = [
+    "openai/gpt-oss-20b",
     "llama-3.3-70b-versatile",  
     "meta-llama/llama-4-8b",
-    "openai/gpt-oss-20b",
 ]
 
 MAX_TOKENS = 1024
@@ -78,9 +78,7 @@ if prompt := st.chat_input("Ask a question"):
     }
 
     # Only last 3 messages
-    recent_history = st.session_state.chat[-3:]
     messages = [system_message] + st.session_state.chat
-    st.write(st.session_state.chat[-3:], st.session_state.chat,messages)
     # Assistant response
     with st.chat_message("assistant"):
         placeholder = st.empty()
